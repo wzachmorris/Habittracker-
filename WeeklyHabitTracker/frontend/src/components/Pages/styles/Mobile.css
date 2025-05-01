@@ -1,0 +1,542 @@
+/* 
+ * Mobile.css - Comprehensive mobile responsiveness styles
+ * This file contains advanced CSS to improve mobile view for key pages
+ * Important: These styles should override any mobile styles in index.css
+ */
+
+/* ===== GLOBAL MOBILE STYLES ===== */
+/* Add a higher specificity selector to ensure these styles take precedence */
+@media screen and (max-width: 768px) {
+  html body
+  /* General padding and margin adjustments */
+  .container {
+    padding: 10px;
+  }
+  
+  .main-content {
+    padding-bottom: 80px; /* Extra padding for bottom nav */
+  }
+  
+  /* Make cards more touch-friendly */
+  .card {
+    margin-bottom: 15px;
+    padding: 12px;
+  }
+  
+  /* Improve button touch targets */
+  button, .btn {
+    min-height: 44px; /* Apple's recommended minimum touch target size */
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    padding: 10px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 10px;
+  }
+}
+
+/* ===== HOMEPAGE SPECIFIC STYLES ===== */
+/* Welcome Container */
+@media screen and (max-width: 768px) {
+  .welcome-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding: 15px;
+    margin: 10px 10px 15px;
+  }
+  
+  .welcome-message h4 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .welcome-message p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .add-habit-btn {
+    width: 100%;
+    margin-left: 0;
+    padding: 12px 15px;
+    border-radius: 6px;
+  }
+}
+
+/* Day Tabs - Significantly improved */
+@media screen and (max-width: 768px) {
+  .day-tabs-container {
+    padding: 0 8px;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .day-tabs-container::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .day-tabs {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    justify-content: flex-start;
+    padding: 5px;
+    gap: 2px;
+  }
+  
+  .day-tab {
+    min-width: 50px;
+    flex: 0 0 auto;
+    padding: 8px 6px;
+    border-radius: 8px;
+    min-height: 65px; /* Better touch target */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .day-tab.active {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  .day-tab.today {
+    position: relative;
+    background-color: rgba(0, 123, 255, 0.07);
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+  }
+  
+  .day-tab.today::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+
+  /* Fix text readability */
+  .day-name {
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+  
+  .day-num {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  
+  .day-month {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+  
+  /* Better touch target */
+  .touch-area {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Add extra styles for mobile-optimized welcome container */
+  .welcome-container.mobile-optimized {
+    margin: 10px 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Large touch targets for important buttons */
+  .touch-target-lg {
+    min-height: 50px;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  /* Mobile-friendly scrolling for horizontal containers */
+  .mobile-friendly-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+}
+
+/* Activity cards for better touch interaction */
+@media screen and (max-width: 768px) {
+  .activity-card {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    min-height: 65px; /* Improve touch target size */
+  }
+  
+  .activity-card-header {
+    margin-bottom: 8px;
+  }
+  
+  .activity-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  /* Consistent button styles for activity cards */
+  .activity-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+  }
+
+  /* Style variations by button type */
+  .open-button.activity-btn {
+    color: #007bff; /* Blue for open button */
+  }
+  
+  .check-button.activity-btn {
+    color: #28a745; /* Green for check button */
+  }
+  
+  .edit-button.activity-btn {
+    color: #6c757d; /* Gray for edit button */
+  }
+  
+  .delete-button.activity-btn {
+    color: #dc3545; /* Red for delete button */
+  }
+  
+  /* Touch-friendly button sizing for mobile */
+  .detail-button, .open-button, .edit-button, .delete-button, .check-button, 
+  .touch-target, .activity-btn {
+    min-width: 40px !important;
+    min-height: 40px !important; /* iOS recommended min size */
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 3px !important;
+    font-size: 1.1rem !important; /* Larger tap targets */
+    padding: 0 !important;
+    border-radius: 8px !important; /* Rounded corners for better touch */
+  }
+  
+  /* Space out buttons to avoid accidental taps */
+  .button-container {
+    display: flex;
+    gap: 6px;
+  }
+  
+  /* Additional touch improvements */
+  .touch-friendly-btns {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Move button content up slightly for better visual alignment */
+  .touch-target {
+    padding-bottom: 2px !important;
+  }
+  
+  /* Make sure card container can handle the larger buttons */
+  .card-body-container {
+    min-height: 56px;
+  }
+}
+
+/* ===== HABITS PAGE SPECIFIC STYLES ===== */
+@media screen and (max-width: 768px) {
+  /* Enhanced time navigation header */
+  .time-navigation-header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .time-navigation-header .navigation-btn {
+    min-width: 110px;
+    min-height: 44px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border-radius: 22px;
+    font-weight: 500;
+  }
+  
+  .time-navigation-header .mobile-nav-btn {
+    white-space: nowrap;
+  }
+  
+  .navigation-arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 3px;
+  }
+  
+  .header-title {
+    width: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+  
+  .header-title h5 {
+    font-size: 1.1rem;
+    margin-bottom: 5px !important;
+  }
+  
+  .btn-today {
+    min-width: 100px;
+    min-height: 36px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  /* Single day view on mobile */
+  .four-day-view {
+    flex-direction: column;
+    padding: 0;
+    overflow: visible;
+  }
+  
+  .day-column {
+    width: 100% !important;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .day-column.today {
+    border-top-width: 3px;
+  }
+  
+  /* Day header improvements */
+  .day-header {
+    padding: 12px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .day-header .day-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .day-column.today .day-header {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  /* Time period improvements */
+  .time-period-section {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .time-period-header {
+    padding: 10px;
+    background-color: rgba(0,0,0,0.03);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .time-period-content {
+    padding: 10px 8px;
+  }
+  
+  /* Better touch-friendly activities in HabitsPage */
+  .activity-card {
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    min-height: 70px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Animation improvements */
+  .slide-left {
+    animation-duration: 0.25s;
+  }
+  
+  .slide-right {
+    animation-duration: 0.25s;
+  }
+}
+
+/* ===== ACTIVITY DETAIL PAGE SPECIFIC STYLES ===== */
+@media screen and (max-width: 768px) {
+  /* Make notes section more mobile-friendly */
+  .notes-section {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  /* Improved tabs for day-specific notes */
+  .nav-tabs .nav-link {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  /* Improved textarea for typing notes */
+  .notes-section textarea {
+    min-height: 120px;
+    font-size: 16px; /* prevent auto-zoom on iOS */
+    padding: 12px;
+  }
+}
+
+/* ===== LEADERBOARD PAGE SPECIFIC STYLES ===== */
+@media screen and (max-width: 768px) {
+  /* Make leaderboard entries stack better on mobile */
+  .leaderboard-container {
+    padding: 10px;
+  }
+  
+  .leaderboard-entry {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .entry-rank {
+    font-size: 1.2rem;
+    align-self: flex-start;
+  }
+  
+  .entry-details {
+    width: 100%;
+  }
+  
+  .entry-stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Category tabs improvement */
+  .category-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .category-tab {
+    flex: 0 0 auto;
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  
+  /* Enhanced modal styles for mobile */
+  .mobile-friendly-modal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+  }
+  
+  .mobile-friendly-modal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .mobile-friendly-modal .modal-header {
+    padding: 16px 20px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .mobile-friendly-modal .modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .mobile-friendly-modal .modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  
+  .mobile-friendly-modal .btn-close {
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 50%;
+    position: relative;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-friendly-modal .modal-footer .btn {
+    flex: 1;
+    min-height: 48px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+
+/* Special fixes for extra small screens */
+@media screen and (max-width: 360px) {
+  /* Make buttons smaller to fit */
+  .btn, button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  /* Simplify headers */
+  .welcome-message h4 {
+    font-size: 1.1rem;
+  }
+  
+  /* Smaller day tabs */
+  .day-tab {
+    min-width: 40px;
+  }
+}

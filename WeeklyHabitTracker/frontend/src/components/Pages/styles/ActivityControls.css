@@ -1,0 +1,169 @@
+/* Activity Control Panel Styles */
+.activity-control-panel {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: 1px solid #dee2e6;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.selected-activity-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.selected-activity-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #212529;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.selected-period-badge {
+  font-size: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+.control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center the container inside the PageWrapper */
+.container.px-0 {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make the activity control panel match card styling */
+.activity-control-panel {
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+/* Mobile optimizations */
+@media (max-width: 576px) {
+  .control-buttons {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .control-buttons .btn-group {
+    margin-bottom: 0.5rem;
+  }
+  
+  .selected-activity-info {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .selected-activity-name {
+    max-width: 70%;
+  }
+  
+  /* Make buttons stack better on very small screens */
+  @media (max-width: 400px) {
+    .control-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .control-buttons .btn-group {
+      width: 100%;
+    }
+    
+    .selected-activity-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .selected-period-badge {
+      margin-left: 0;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/* Selectable activity item - simplified since we no longer need selection */
+.selectable-activity {
+  position: relative;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+/* Subtle hover effect for draggable items */
+.selectable-activity:hover .card {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Preserve drag icon space */
+.selectable-activity .card {
+  padding-right: 30px;
+}
+
+/* Loading state and overlay */
+.activities-updating {
+  position: relative;
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.activity-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 0.25rem;
+}
+
+/* Drag and drop styling */
+.selectable-activity.dragging {
+  opacity: 0.6;
+}
+
+/* Drag handle style */
+.drag-handle {
+  cursor: grab;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  color: #6c757d;
+}
+
+.drag-handle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

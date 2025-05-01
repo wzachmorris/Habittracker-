@@ -1,0 +1,40 @@
+Attempting to connect to MongoDB...
+MongoDB URI: URI is defined
+Using connection string (sanitized): mongodb+srv://williamzachmorris:****@habits.smzvges.mongodb.net/habits?retryWrites=true&w=majority&appName=habits
+Database name "habits" found in connection string.
+
+MONGODB CONNECTION TROUBLESHOOTING:
+1. Check if your IP is whitelisted in MongoDB Atlas
+2. Verify username and password are correct
+3. Ensure the cluster is running
+4. Try using the "Allow Access from Anywhere" setting in Atlas for testing
+Attempting to connect to MongoDB with URI: URI defined
+Connecting with explicit database name: "habits" and increased timeout
+URI format check - includes mongodb+srv:// true
+Connection options: {"serverSelectionTimeoutMS":10000,"dbName":"habits","directConnection":false,"retryWrites":true,"w":"majority"}
+Auth Controller: Using JWT_SECRET: x9Z...
+Server running on port 4002
+Your public IP address is: 2800:810:5ea:161c:8985:9b91:fb85:9d99
+Make sure this IP is whitelisted in MongoDB Atlas under Network Access
+MongoDB Connected: ac-xs0d2pc-shard-00-01.smzvges.mongodb.net
+MongoDB Database: habits
+MongoDB State: 1
+Connected to MongoDB successfully
+MongoDB host: ac-xs0d2pc-shard-00-01.smzvges.mongodb.net
+MongoDB database name: habits
+MongoDB connection state: 1 (1 = connected)
+Attempting to register user with email: test2@example.com
+MongoDB connected, checking if user exists
+User registered with userId: 28bf69db-c0b5-474d-a7c4-92d3a933aea0
+Auth Middleware: Checking authentication
+Auth Middleware: Token present: true
+Auth Middleware: Verifying token
+Auth Middleware: Using JWT_SECRET: x9Z...
+Auth Middleware: Token valid for user: 28bf69db-c0b5-474d-a7c4-92d3a933aea0
+Created new countdown event in MongoDB: Test Countdown for user 28bf69db-c0b5-474d-a7c4-92d3a933aea0
+Auth Middleware: Checking authentication
+Auth Middleware: Token present: true
+Auth Middleware: Verifying token
+Auth Middleware: Using JWT_SECRET: x9Z...
+Auth Middleware: Token valid for user: 28bf69db-c0b5-474d-a7c4-92d3a933aea0
+Retrieved 1 countdown events from MongoDB for user 28bf69db-c0b5-474d-a7c4-92d3a933aea0

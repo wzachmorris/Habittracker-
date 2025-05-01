@@ -1,0 +1,113 @@
+/* Add touch-specific styling for mobile */
+.mobile-drag-item {
+  margin-bottom: 12px;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-drag-item:active {
+  transform: scale(0.98);
+}
+
+/* Add a hint for users that items can be dragged */
+.selectable-activity {
+  position: relative;
+}
+
+.selectable-activity:after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'%3E%3Cpath d='M3 6h18M3 12h18' stroke='%23999' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.is-dragging {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;
+  z-index: 9999;
+  transform: scale(1.02);
+  opacity: 0.9;
+  cursor: grabbing !important;
+}
+
+/* Enhanced drop area styles */
+.droppable-hover {
+  animation: pulse 1s infinite alternate;
+  box-shadow: inset 0 0 5px rgba(2, 136, 209, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0f7fa;
+  }
+  100% {
+    background-color: #b2ebf2;
+  }
+}
+
+/* Make draggable items clearer */
+.draggable-item {
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  margin-bottom: 8px !important;
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Add a draggable handle visual hint */
+.draggable-item::before {
+  content: "⋮⋮";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Empty state styling */
+.text-center.text-muted.py-3 {
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  padding: 15px !important;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+/* Add visual cues for draggable items on mobile */
+@media (max-width: 768px) {
+  .selectable-activity:before {
+    content: "⣿";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+  
+  .draggable-item {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Larger drop target for mobile */
+  .card-body {
+    min-height: 120px !important;
+    padding: 15px !important;
+  }
+}
