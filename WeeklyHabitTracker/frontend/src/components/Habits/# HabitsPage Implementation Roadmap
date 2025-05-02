@@ -1,0 +1,224 @@
+# HabitsPage Implementation Roadmap
+
+This document provides a step-by-step guide to implementing the new HabitsPage architecture. Follow these steps in sequence to build out the full functionality.
+
+## Phase 1: Setup and Utilities
+
+### Step 1: Create Basic Folder Structure
+```
+mkdir -p src/components/Habits/Pages
+mkdir -p src/components/Habits/Views
+mkdir -p src/components/Habits/DragAndDrop
+mkdir -p src/components/Habits/Containers
+mkdir -p src/components/Habits/UI
+mkdir -p src/components/Habits/utils
+```
+
+### Step 2: Implement Utility Files
+
+#### dateUtils.js (Priority: High)
+- Implement the basic date functions
+- Test with different date scenarios
+- Ensure timezone handling is consistent
+
+#### activityUtils.js (Priority: High)
+- Implement the activity processing functions
+- Test with sample activity data
+- Ensure correct period assignment
+
+#### dragUtils.js (Priority: Medium)
+- Implement reordering utilities
+- Test with sample arrays
+- Ensure order calculation works for different scenarios
+
+## Phase 2: Core Components
+
+### Step 3: Build Container Components
+
+#### DayColumn.js (Priority: High)
+- Create basic structure
+- Implement header with date display
+- Add event button (non-functional initially)
+
+#### TimePeriod.js (Priority: High)
+- Create section structure
+- Implement title display
+- Create placeholder for items
+
+#### AllDayEvents.js (Priority: Medium)
+- Implement basic structure
+- Create events list
+
+### Step 4: Build UI Components
+
+#### NavigationHeader.js (Priority: High)
+- Implement navigation buttons
+- Create dynamic title based on navigation mode
+- Style based on whether showing past/present/future
+
+#### CalendarEvent.js (Priority: High)
+- Create event card layout
+- Implement proper time display
+- Add recurrence indicators
+
+#### EventFormModal.js (Priority: Low, can implement later)
+- Create modal shell
+- Set up form structure (non-functional initially)
+
+## Phase 3: Drag and Drop Components
+
+### Step 5: Implement Drag and Drop
+
+#### DraggableHabit.js (Priority: High)
+- Implement useDrag hook
+- Create draggable UI
+- Handle completed/missed states
+
+#### DroppableTimeSlot.js (Priority: High)
+- Implement useDrop hook
+- Create dropping zone
+- Handle drop events
+
+#### DroppableSection.js (Priority: Medium)
+- Implement section-level drop zone
+- Handle section vs. item dropping
+
+## Phase 4: View Components
+
+### Step 6: Implement Views
+
+#### PastDayView.js (Priority: Medium)
+- Create read-only day view
+- Implement completion display
+- Style for past days
+
+#### TodayView.js (Priority: Highest)
+- Implement full drag and drop
+- Connect to completions toggle
+- Ensure proper event display
+
+#### FutureDayView.js (Priority: High)
+- Implement with local storage for custom orders
+- Add drag and drop
+- Handle events properly
+
+## Phase 5: Main Container
+
+### Step 7: Implement HabitsPage.js (Priority: Highest)
+- Set up state management
+- Implement API integration
+- Create navigation logic
+- Connect all components
+
+## Phase 6: Refinement and Testing
+
+### Step 8: Testing
+- Test all drag and drop scenarios
+- Verify date navigation
+- Test on different screen sizes
+- Check data persistence
+
+### Step 9: Performance Optimization
+- Implement memoization for heavy calculations
+- Optimize rerenders
+- Add loading states
+
+### Step 10: Mobile Enhancements
+- Test and optimize for touch devices
+- Improve mobile navigation
+- Ensure proper scaling
+
+## Component Integration Map
+
+This diagram shows the component relationships:
+
+```
+HabitsPage
+│
+├── NavigationHeader
+│
+├── PastDayView (for days before today)
+│   ├── DayColumn
+│   │   ├── AllDayEvents
+│   │   │   └── CalendarEvent(s)
+│   │   │
+│   │   └── TimePeriod (Morning/Afternoon/Evening)
+│   │       ├── Activity(s)
+│   │       └── CalendarEvent(s)
+│
+├── TodayView (for today)
+│   ├── DayColumn
+│   │   ├── AllDayEvents
+│   │   │   └── CalendarEvent(s)
+│   │   │
+│   │   └── DroppableTimeSlot (Morning/Afternoon/Evening)
+│   │       ├── TimePeriod
+│   │       │   ├── DraggableHabit(s)
+│   │       │   └── CalendarEvent(s)
+│   │       │
+│   │       └── DroppableSection(s)
+│
+├── FutureDayView (for days after today)
+│   ├── DayColumn
+│   │   ├── AllDayEvents
+│   │   │   └── CalendarEvent(s)
+│   │   │
+│   │   └── DroppableTimeSlot (Morning/Afternoon/Evening)
+│   │       ├── TimePeriod
+│   │       │   ├── DraggableHabit(s)
+│   │       │   └── CalendarEvent(s)
+│   │       │
+│   │       └── DroppableSection(s)
+│
+└── EventFormModal
+```
+
+## Data Flow Diagram
+
+```
+API ⟷ HabitsPage (Central State) ⟷ localStorage
+  │
+  ├─→ PastDayView (Read Only)
+  │
+  ├─→ TodayView (Database Sync)
+  │    │
+  │    └─→ User Interactions ──→ Database Update
+  │
+  └─→ FutureDayView (Local Storage)
+       │
+       └─→ User Interactions ──→ localStorage Update
+```
+
+## Implementation Tips
+
+1. Start by implementing the basic structure without drag and drop
+2. Add drag and drop once the basic layout works
+3. Focus on Today view first, then expand to future and past
+4. Test frequently with real data to catch issues early
+5. Implement one piece at a time, ensuring each component works before moving on
+6. Use console.log liberally during development to trace data flow
+
+## Troubleshooting Common Issues
+
+### React-DnD Issues
+- Make sure `DndProvider` wraps all drag and drop components
+- Only one backend can be active at a time
+- Touch backend needs `{ enableMouseEvents: true }` for testing
+
+### State Management Issues
+- Use React DevTools to inspect component state
+- Log state changes to understand the flow
+- Verify API responses match expected formats
+
+### CSS and Layout Issues
+- Use browser dev tools to inspect element styling
+- Test responsiveness with browser resize
+- Verify CSS classes are applied correctly
+
+## Next Steps After Initial Implementation
+
+1. Add animations for smoother transitions
+2. Implement a "week view" option for better planning
+3. Add notification system for upcoming events
+4. Implement drag-to-create for new events
+5. Add search functionality for habits and events

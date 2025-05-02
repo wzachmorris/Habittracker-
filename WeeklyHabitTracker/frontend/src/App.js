@@ -20,7 +20,7 @@ import ProfilePage from './components/Pages/ProfilePage';
 import ActivitiesPage from './components/Pages/ActivitiesPage';
 import ActivityDetailPage from './components/Pages/ActivityDetailPage';
 import CalendarPage from './components/Pages/CalendarPage';
-import HabitsPage from './components/Pages/HabitsPage';
+import HabitsPage from './components/Habits/Pages/HabitsPage';
 import CountdownPage from './components/Pages/CountdownPage';
 import LeaderboardPage from './components/Pages/LeaderboardPage';
 import StreaksPage from './components/Pages/StreaksPage';

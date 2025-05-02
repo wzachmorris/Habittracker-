@@ -1,0 +1,106 @@
+/* src/components/Habits/styles/habits.css */
+
+/* Overall container styles */
+.weekly-view-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.weekly-view {
+  display: flex;
+  position: relative;
+  min-height: 400px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: visible;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.four-day-view {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  min-height: 400px;
+  height: auto; 
+  gap: 15px;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+/* Navigation header styles */
+.time-navigation-header-container {
+  max-width: 900px;
+  margin: 0 auto 16px;
+}
+
+.time-navigation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+  color: white;
+}
+
+.past-header {
+  background-color: #6c757d;
+  background-image: linear-gradient(to right, #495057, #6c757d);
+}
+
+.current-header {
+  background-color: #007bff;
+  background-image: linear-gradient(to right, #0062cc, #007bff);
+}
+
+.future-header {
+  background-color: #17a2b8;
+  background-image: linear-gradient(to right, #138496, #17a2b8);
+}
+
+.header-title {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.navigation-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  min-width: 90px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  padding: 4px 10px;
+  margin: 0 8px;
+}
+
+.navigation-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.btn-today {
+  background-color: white;
+  color: #007bff;
+  border-radius: 15px;
+  font-weight: 500;
+  border: none;
+  padding: 3px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-today:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}

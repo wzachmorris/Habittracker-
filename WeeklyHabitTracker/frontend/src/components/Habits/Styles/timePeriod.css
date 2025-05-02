@@ -1,0 +1,178 @@
+/* src/components/Habits/styles/timePeriod.css */
+
+.time-period {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.time-period:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.time-period-header {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.period-icon {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.period-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.items-count {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.time-period-content {
+  padding: 12px;
+  min-height: 50px;
+}
+
+.empty-period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.time-period-content.read-only {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Period-specific styles */
+.time-period.morning .time-period-header {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.time-period.afternoon .time-period-header {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.time-period.evening .time-period-header {
+  background-color: rgba(111, 66, 193, 0.1);
+}
+
+/* Activity card styles */
+.activity-card {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: white;
+  border-left: 4px solid #6c757d;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.activity-card.completed {
+  border-left-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.05);
+}
+
+.activity-card.missed {
+  border-left-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.05);
+  opacity: 0.7;
+}
+
+.activity-card-header {
+  margin-bottom: 6px;
+}
+
+.activity-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.activity-card-body {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.activity-duration {
+  display: inline-block;
+  padding: 2px 6px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+/* Completed and missed styling */
+.activity-card.completed::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.activity-card.missed::after {
+  content: '✕';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Animation for completion */
+@keyframes completeActivity {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.activity-card.just-completed {
+  animation: completeActivity 0.5s ease-out;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .time-period-header {
+    padding: 8px 10px;
+  }
+  
+  .period-title {
+    font-size: 0.85rem;
+  }
+  
+  .time-period-content {
+    padding: 8px;
+  }
+  
+  .activity-card {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .activity-name {
+    font-size: 0.85rem;
+  }
+  
+  .activity-card-body {
+    font-size: 0.75rem;
+  }
+}
